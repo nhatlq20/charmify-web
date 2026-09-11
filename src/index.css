@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Nunito:wght@400;600;700;800;900&family=Patrick+Hand&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FBF9F5;
+    color: #111827;
+  }
+
+  h1, h2, h3, .font-hand {
+    font-family: 'Patrick Hand', cursive, sans-serif;
+  }
+}
+
+/* Custom Inky Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FBF9F5;
+  border-left: 2px solid #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #263D5B;
+  border: 2px solid #111827;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #49B6E5;
+}
+
+/* ── DOODLE SIGNATURE UTILITIES ────────────────────────────────────────── */
+
+/* Sketched Organic Contours */
+.doodle-box {
+  border: 2.5px solid #111827;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.doodle-box-alt {
+  border: 2.5px solid #111827;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+}
+
+.doodle-slot {
+  border: 2px dashed #475569;
+  border-radius: 12px 16px 14px 18px / 16px 14px 18px 12px;
+}
+
+/* Tactile Bouncy Doodle Buttons */
+.doodle-btn {
+  border: 2.5px solid #111827;
+  box-shadow: 3px 4px 0px #111827;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out;
+}
+
+.doodle-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 6px 0px #111827;
+}
+
+.doodle-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #111827;
+}
+
+/* Paper / Note Tape Accent */
+.tape-accent {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 70px;
+  height: 22px;
+  background-color: rgba(253, 230, 138, 0.75);
+  border: 1.5px solid rgba(17, 24, 39, 0.3);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* Sketchpad Grid Texture */
+.bg-sketchpad {
+  background-color: #FBF9F5;
+  background-image: 
+    radial-gradient(#111827 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+}
+
+/* Wavy Underline */
+.wavy-underline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #49B6E5;
+  text-underline-offset: 18px;
+  text-decoration-thickness: 3px;
+}
+
+/* Continuous Horizontal Flowing Loop (Moving Right) */
+@keyframes flowRightLoop {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-flow-right {
+  display: flex;
+  width: max-content;
+  animation: flowRightLoop 16s linear infinite;
+}
+
+.animate-flow-right:hover {
+  animation-play-state: paused;
+}
