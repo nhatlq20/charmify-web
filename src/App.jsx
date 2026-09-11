@@ -177,13 +177,29 @@ export default function App() {
         </div>
 
         {/* Handwritten Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#111827] mb-2 leading-tight">
-          Thiết kế chiếc vòng <br className="hidden sm:inline" />
-          <span className="wavy-underline text-[#263D5B]">độc bản của bạn</span>
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#111827] mb-3 leading-tight sm:leading-snug">
+          <span className="block">Thiết kế chiếc vòng</span>
+          <span className="relative inline-block text-[#263D5B] whitespace-nowrap mt-1 sm:mt-2 pb-2.5">
+            độc bản của bạn
+            <svg
+              className="absolute left-0 bottom-0 w-full h-2.5 sm:h-3.5 text-[#49B6E5] pointer-events-none"
+              viewBox="0 0 100 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 0 6 Q 6.25 0, 12.5 6 T 25 6 T 37.5 6 T 50 6 T 62.5 6 T 75 6 T 87.5 6 T 100 6"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
         </h1>
 
         {/* Brand Slogan */}
-        <p className="text-xl sm:text-2xl font-extrabold text-[#263D5B] mt-3 sm:mt-4 tracking-wide">
+        <p className="text-lg sm:text-2xl font-extrabold text-[#263D5B] mt-2 sm:mt-4 tracking-wide">
           “Chạm phong cách, kể chuyện riêng”
         </p>
       </section>
@@ -195,9 +211,9 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* ─────────────────────────────────────────────────────────────────
-              CỘT TRÁI (LEFT PANE) — KẾT QUẢ THỜI GIAN THỰC & DẢI VÒNG TAY
+              1. KHUNG TRƯNG BÀY DẢI VÒNG (Mobile: Vị trí 1, Desktop: Cột trái hàng 1)
               ───────────────────────────────────────────────────────────────── */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 order-1">
             
             {/* Khung trưng bày dải vòng chính */}
             <div className="bg-[#FFFFFF] doodle-box p-5 sm:p-7 shadow-sketch-lg relative">
@@ -276,7 +292,7 @@ export default function App() {
                           Chưa có charm nào trên vòng!
                         </p>
                         <p className="text-xs text-white/75 mt-1 max-w-xs leading-relaxed">
-                          Chọn các charm bên phải để gắn vào vòng tay của bạn.
+                          Chọn các charm bên dưới để gắn vào vòng tay của bạn.
                         </p>
                       </div>
                     ) : (() => {
@@ -364,40 +380,12 @@ export default function App() {
                 </div>
               )}
             </div>
-
-            {/* Bảng tính giá hóa đơn dán băng keo (Order Summary) */}
-            <div className="bg-[#FFFFFF] doodle-box p-5 sm:p-6 shadow-sketch-md rotate-[-0.5deg] relative border-[2.5px] border-[#111827]">
-              <div className="tape-accent" style={{ transform: 'translateX(-50%) rotate(1deg)', backgroundColor: 'rgba(254, 205, 211, 0.8)' }} />
-
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
-                <div className="w-full sm:w-auto text-left">
-                  <span className="text-xs font-mono font-bold text-[#263D5B] uppercase tracking-wider block mb-0.5">
-                    📋 BẢNG TÍNH GIÁ ĐƠN HÀNG
-                  </span>
-                  <div className="text-2xl sm:text-3xl font-bold text-[#111827] font-mono tracking-tight">
-                    {formatVND(totalPrice)}
-                  </div>
-                  <p className="text-xs text-[#263D5B] font-mono mt-0.5">
-                    Vòng trơn ({formatVND(BASE_PRICE)}) + {totalCharms} charm ({formatVND(totalCharms * CHARM_PRICE)})
-                  </p>
-                </div>
-
-                {/* Nút chốt đơn chính */}
-                <button
-                  onClick={() => scrollToSection('checkout')}
-                  className="w-full sm:w-auto px-7 py-3 rounded-[255px_15px_225px_15px/15px_225px_15px_255px] bg-[#49B6E5] hover:bg-[#35a8d9] text-white text-base font-bold border-[2.5px] border-[#111827] shadow-sketch doodle-btn flex items-center justify-center gap-2 active:scale-95"
-                >
-                  <span>Chốt chiếc vòng này ➔</span>
-                </button>
-              </div>
-            </div>
-
           </div>
 
           {/* ─────────────────────────────────────────────────────────────────
-              CỘT PHẢI (RIGHT PANE) — DANH SÁCH CHARM ĐỂ CHỌN
+              2. KHO HẠT CHARM (Mobile: Vị trí 2 ngay dưới vòng tay, Desktop: Cột phải)
               ───────────────────────────────────────────────────────────────── */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
+          <div className="lg:col-span-5 lg:row-span-2 order-2 lg:sticky lg:top-24">
             <div className="bg-[#FFFFFF] doodle-box p-5 sm:p-6 shadow-sketch-lg relative">
               {/* Whiteboard Header */}
               <div className="flex items-center justify-between gap-2 pb-4 mb-4 border-b-2 border-[#111827]">
@@ -445,12 +433,43 @@ export default function App() {
                       </div>
 
                       {/* Tên charm */}
-                      <span className="text-xs font-bold text-[#111827] mt-1.5 line-clamp-1">
+                      <span className="text-[11px] sm:text-xs font-bold text-[#111827] mt-1.5 truncate max-w-full">
                         {charm.name}
                       </span>
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+
+          {/* ─────────────────────────────────────────────────────────────────
+              3. BẢNG TÍNH GIÁ ĐƠN HÀNG (Mobile: Vị trí 3 dưới chọn charm, Desktop: Cột trái hàng 2)
+              ───────────────────────────────────────────────────────────────── */}
+          <div className="lg:col-span-7 order-3">
+            <div className="bg-[#FFFFFF] doodle-box p-5 sm:p-6 shadow-sketch-md rotate-[-0.5deg] relative border-[2.5px] border-[#111827]">
+              <div className="tape-accent" style={{ transform: 'translateX(-50%) rotate(1deg)', backgroundColor: 'rgba(254, 205, 211, 0.8)' }} />
+
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
+                <div className="w-full sm:w-auto text-left">
+                  <span className="text-xs font-mono font-bold text-[#263D5B] uppercase tracking-wider block mb-0.5">
+                    📋 BẢNG TÍNH GIÁ ĐƠN HÀNG
+                  </span>
+                  <div className="text-2xl sm:text-3xl font-bold text-[#111827] font-mono tracking-tight">
+                    {formatVND(totalPrice)}
+                  </div>
+                  <p className="text-xs text-[#263D5B] font-mono mt-0.5">
+                    Vòng trơn ({formatVND(BASE_PRICE)}) + {totalCharms} charm ({formatVND(totalCharms * CHARM_PRICE)})
+                  </p>
+                </div>
+
+                {/* Nút chốt đơn chính */}
+                <button
+                  onClick={() => scrollToSection('checkout')}
+                  className="w-full sm:w-auto px-7 py-3 rounded-[255px_15px_225px_15px/15px_225px_15px_255px] bg-[#49B6E5] hover:bg-[#35a8d9] text-white text-base font-bold border-[2.5px] border-[#111827] shadow-sketch doodle-btn flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <span>Chốt chiếc vòng này ➔</span>
+                </button>
               </div>
             </div>
           </div>
